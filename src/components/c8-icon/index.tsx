@@ -17,11 +17,17 @@ const C8Icon: React.FC<C8IconProps> = ({ from, to }) => {
 
 	return (
 		<div className='c8-icon' style={iconStyles}>
-			<span style={{marginLeft: '-40px'}}>{from}</span>
+			<span style={iconSpanStyles}>{from}</span>
 			<div className='divider' />
-			<span style={{marginRight: '-40px'}}>{to}</span>
+			<span style={iconSpanStyles} className='c8-right'>{to}</span>
 		</div>
 	);
+}
+
+const iconSpanStyles = {
+	display: 'inline-block',
+	marginRight: '40px',
+	marginTop: '10px'
 }
 
 export default C8Icon

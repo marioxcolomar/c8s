@@ -1,13 +1,17 @@
 .App {
-  text-align: center;
+	text-align: center;
 }
 
 .divider {
 	border-top: 2px solid black;
 	width: 80px;
-	transform: translate(0px, 15px) rotate(135deg);
+	transform: translate(0px, 0px) rotate(135deg);
 }
 
 .c8-icon :hover {
 	cursor: pointer;
+}
+
+.c8-right {
+	margin-left: 35px;
 }
