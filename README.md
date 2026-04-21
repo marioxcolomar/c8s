@@ -1,5 +1,12 @@
-# Vue 3 + Vite
+# C8s application
 
-This template should help get you started developing with Vue 3 in Vite. The template uses Vue 3 `<script setup>` SFCs, check out the [script setup docs](https://v3.vuejs.org/api/sfc-script-setup.html#sfc-script-setup) to learn more.
+Neat little app that has all those convenient convertions that we might on the daily basis. The name comes from the word "converters" but shorten with the number of characters between the first and last character.
 
-Learn more about IDE Support for Vue in the [Vue Docs Scaling up Guide](https://vuejs.org/guide/scaling-up/tooling.html#ide-support).
+## Motivation
+
+Having to search some converstion constantly for various things, I felt the need of something more convenient and easily reachable. The idea is to have the app easily accessible in a computer and a phone without having to search the same conversions multiple times. The app was vibe coded after a previous version. Changes and corrections needed to be done before it was ready to share.
+
+## Current converters
+[x] Distance: convert miles to kilometers.  
+[x] Weight: kilograms to labs (old joke i heard from a comedian...).  
+[x] Fuel efficiency: northen american to european for ease of comparison.
