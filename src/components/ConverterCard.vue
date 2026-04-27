@@ -1,59 +1,59 @@
 <script setup>
-import { ref, watch } from 'vue'
+import { ref, watch } from "vue";
 
 const props = defineProps({
   conversion: {
     type: Object,
-    required: true
-  }
-})
+    required: true,
+  },
+});
 
-const leftValue = ref('')
-const rightValue = ref('')
-const leftUnit = ref(props.conversion.units[0])
-const rightUnit = ref(props.conversion.units[1])
-const isSwapped = ref(false)
+const leftValue = ref("");
+const rightValue = ref("");
+const leftUnit = ref(props.conversion.units[0]);
+const rightUnit = ref(props.conversion.units[1]);
+const isSwapped = ref(false);
 
 function convert(direction, value) {
-  if (!value || isNaN(value)) return ''
-  const num = parseFloat(value)
-  
-  if (direction === 'left') {
-    const base = props.conversion.toBase[rightUnit.value.id](num)
-    return props.conversion.fromBase[leftUnit.value.id](base)
+  if (!value || isNaN(value)) return "";
+  const num = parseFloat(value);
+
+  if (direction === "left") {
+    const base = props.conversion.toBase[rightUnit.value.id](num);
+    return props.conversion.fromBase[leftUnit.value.id](base);
   } else {
-    const base = props.conversion.toBase[leftUnit.value.id](num)
-    return props.conversion.fromBase[rightUnit.value.id](base)
+    const base = props.conversion.toBase[leftUnit.value.id](num);
+    return props.conversion.fromBase[rightUnit.value.id](base);
   }
 }
 
 function onLeftChange() {
-  rightValue.value = convert('left', leftValue.value)
+  rightValue.value = convert("left", leftValue.value);
 }
 
 function onRightChange() {
-  leftValue.value = convert('right', rightValue.value)
+  leftValue.value = convert("right", rightValue.value);
 }
 
 function swap() {
-  isSwapped.value = !isSwapped.value
-  const temp = leftUnit.value
-  leftUnit.value = rightUnit.value
-  rightUnit.value = temp
-  leftValue.value = ''
-  rightValue.value = ''
+  isSwapped.value = !isSwapped.value;
+  const temp = leftUnit.value;
+  leftUnit.value = rightUnit.value;
+  rightUnit.value = temp;
+  leftValue.value = "";
+  rightValue.value = "";
 }
 
 function clear() {
-  leftValue.value = ''
-  rightValue.value = ''
+  leftValue.value = "";
+  rightValue.value = "";
 }
 </script>
 
 <template>
   <div class="converter-card">
     <h2 class="card-title">{{ conversion.title }}</h2>
-    
+
     <div class="input-group">
       <div class="input-wrapper">
         <input
@@ -65,13 +65,20 @@ function clear() {
         />
         <span class="unit-label">{{ leftUnit.symbol }}</span>
       </div>
-      
+
       <button class="swap-btn" @click="swap" :class="{ swapped: isSwapped }">
-        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+        <svg
+          width="20"
+          height="20"
+          viewBox="0 0 24 24"
+          fill="none"
+          stroke="currentColor"
+          stroke-width="2"
+        >
           <path d="M7 16l-4-4m0 0l4-4m-4 4h18M17 8l4 4m0 0l-4 4m4-4H3" />
         </svg>
       </button>
-      
+
       <div class="input-wrapper">
         <input
           v-model="rightValue"
@@ -83,7 +90,7 @@ function clear() {
         <span class="unit-label">{{ rightUnit.symbol }}</span>
       </div>
     </div>
-    
+
     <button class="clear-btn" @click="clear">Clear</button>
   </div>
 </template>
@@ -94,7 +101,9 @@ function clear() {
   border: 1px solid #30363d;
   border-radius: 12px;
   padding: 24px;
-  transition: box-shadow 0.3s ease, border-color 0.3s ease;
+  transition:
+    box-shadow 0.3s ease,
+    border-color 0.3s ease;
 }
 
 .converter-card:hover {
@@ -103,7 +112,7 @@ function clear() {
 }
 
 .card-title {
-  font-family: 'DM Sans', sans-serif;
+  font-family: "DM Sans", sans-serif;
   font-size: 18px;
   font-weight: 600;
   color: #e6edf3;
@@ -131,10 +140,12 @@ function clear() {
   border-radius: 8px;
   padding: 12px 16px;
   padding-right: 48px;
-  font-family: 'JetBrains Mono', monospace;
+  font-family: "JetBrains Mono", monospace;
   font-size: 20px;
   color: #e6edf3;
-  transition: border-color 0.2s ease, box-shadow 0.2s ease;
+  transition:
+    border-color 0.2s ease,
+    box-shadow 0.2s ease;
 }
 
 .input-wrapper input:focus {
@@ -152,7 +163,7 @@ function clear() {
   right: 12px;
   top: 50%;
   transform: translateY(-50%);
-  font-family: 'DM Sans', sans-serif;
+  font-family: "DM Sans", sans-serif;
   font-size: 14px;
   font-weight: 500;
   color: #8b949e;
@@ -193,7 +204,7 @@ function clear() {
   padding: 8px;
   background: transparent;
   border: none;
-  font-family: 'DM Sans', sans-serif;
+  font-family: "DM Sans", sans-serif;
   font-size: 13px;
   color: #7d8590;
   cursor: pointer;

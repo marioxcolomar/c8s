@@ -13,13 +13,8 @@ const conversion = computed(() => {
 
 const leftValue = ref("");
 const rightValue = ref("");
-const isSwapped = ref(false);
-const leftUnit = computed(() =>
-  isSwapped.value ? conversion.value?.units[1] : conversion.value?.units[0],
-);
-const rightUnit = computed(() =>
-  isSwapped.value ? conversion.value?.units[0] : conversion.value?.units[1],
-);
+const leftUnit = computed(() => conversion.value?.units[0]);
+const rightUnit = computed(() => conversion.value?.units[1]);
 
 function convert(source, value) {
   if (!value || isNaN(value) || !conversion.value) return "";
@@ -38,12 +33,6 @@ function onLeftInput() {
 
 function onRightInput() {
   leftValue.value = convert("right", rightValue.value).toFixed(2);
-}
-
-function swap() {
-  isSwapped.value = !isSwapped.value;
-  leftValue.value = "";
-  rightValue.value = "";
 }
 
 function clear() {
@@ -82,25 +71,6 @@ function goBack() {
             />
             <span class="unit-symbol">{{ leftUnit?.symbol }}</span>
           </div>
-        </div>
-
-        <div class="swap-section">
-          <button
-            class="swap-btn"
-            @click="swap"
-            :class="{ swapped: isSwapped }"
-          >
-            <svg
-              width="32"
-              height="32"
-              viewBox="0 0 24 24"
-              fill="none"
-              stroke="currentColor"
-              stroke-width="2"
-            >
-              <path d="M7 16l-4-4m0 0l4-4m-4 4h18M17 8l4 4m0 0l-4 4m4-4H3" />
-            </svg>
-          </button>
         </div>
 
         <div class="input-section">
@@ -239,34 +209,6 @@ function goBack() {
   font-size: 20px;
   font-weight: 600;
   color: #f0883e;
-}
-
-.swap-section {
-  display: flex;
-  justify-content: center;
-}
-
-.swap-btn {
-  width: 56px;
-  height: 56px;
-  border-radius: 50%;
-  background: #161b22;
-  border: 1px solid #30363d;
-  color: #8b949e;
-  cursor: pointer;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  transition: all 0.3s ease;
-}
-
-.swap-btn:hover {
-  border-color: #f0883e;
-  color: #f0883e;
-}
-
-.swap-btn.swapped {
-  transform: rotate(180deg);
 }
 
 .clear-btn {
