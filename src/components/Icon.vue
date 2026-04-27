@@ -17,6 +17,8 @@ import { FontAwesomeIcon } from "@fortawesome/vue-fontawesome";
 <template>
   <FontAwesomeIcon v-if="name === 'route'" :icon="faRuler" size="xl" />
 
+  <FontAwesomeIcon v-else-if="name === 'ruler'" :icon="faRuler" size="xl" />
+
   <FontAwesomeIcon
     v-else-if="name === 'scale'"
     :icon="faWeightHanging"

@@ -23,6 +23,13 @@ import Icon from "../components/Icon.vue";
           </div>
           <span class="card-label">{{ conv.title }}</span>
         </router-link>
+        
+        <router-link to="/converter/length" class="icon-card">
+          <div class="icon-wrapper">
+            <Icon name="ruler" />
+          </div>
+          <span class="card-label">Length</span>
+        </router-link>
       </div>
     </main>
   </div>

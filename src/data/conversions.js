@@ -18,8 +18,8 @@ export const conversions = [
       { id: "kg", label: "Kilograms", symbol: "kg" },
       { id: "lb", label: "Pounds", symbol: "lb" },
     ],
-    toBase: { kg: (v) => v, lb: (v) => v * 2.20462 },
-    fromBase: { kg: (v) => v, lb: (v) => v / 2.20462 },
+    toBase: { kg: (v) => v, lb: (v) => v / 2.20462 },
+    fromBase: { kg: (v) => v, lb: (v) => v * 2.20462 },
   },
   {
     id: "fuel",
